@@ -16,13 +16,14 @@ export const AuthProvider = ({children}) => {
     }
 
     const login = (username, password) => {
-        const storedUser = JSON.parse(localStorage("user"));
+        const storedUser = JSON.parse(localStorage.getItem("user"));
         if(
             storedUser &&
             storedUser.username === username &&
             storedUser.password === password
         ) {
             setUser(storedUser);
+            console.log(storedUser);
             return true;
         }
     }
