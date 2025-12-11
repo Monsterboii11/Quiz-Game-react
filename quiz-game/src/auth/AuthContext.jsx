@@ -16,7 +16,19 @@ export const AuthProvider = ({children}) => {
     }
 
     const login = (username, password) => {
+        const storedUser = JSON.parse(localStorage("user"));
+        if(
+            storedUser &&
+            storedUser.username === username &&
+            storedUser.password === password
+        ) {
+            setUser(storedUser);
+            return true;
+        }
+    }
 
+    const logout = () => {
+        setUser(null)
     }
 
     return (
